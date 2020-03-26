@@ -1,0 +1,15 @@
+{
+  "productCode": "COD2",
+  "name": "Lovely summer T-Shirt",
+  "color": "RED",
+  "branch": {
+    "id": 52
+  },
+  "catalog": {
+    "id": 1
+  },
+  "prices" : [{
+    "price" : 200,
+    "unit" : 1
+  }]
+}

@@ -1,0 +1,64 @@
+@startuml
+
+entity "Product Catalog" as ProductCatalog  {
+  + id (PK)
+  --
+  product catalog code
+  name
+  description
+}
+
+entity Branch {
+  + id (pk)
+  --
+  branch code
+  name
+  description
+}
+
+entity Product  {
+  + id (PK)
+  --
+  # ProductCatalog id (FK)
+  * product code string
+  * name string
+  * decription string
+  * color string
+  # branch id (FK)
+  
+}
+
+entity ProductPrice {
+  + id (PK)
+  --
+  # product id (FK)
+  * price decimal
+  * unit number
+  * default currency string
+  * effective date date
+  * has promotion
+}
+
+
+entity Attribute  {
+  + id (PK)
+  --
+  name string
+  type string
+  unit string
+}
+
+entity "Product Attribute" as ProductAttrbute {
+  + "attribute id" (PK)
+  + "product id" (PK)
+  --
+  value string
+}
+
+ProductCatalog ||-right-o{ Product
+Product ||-right-|{ ProductAttrbute
+ProductAttrbute }|-right-|| Attribute
+Product }o-down-|| Branch
+Product ||-down-|{ ProductPrice
+
+@enduml
