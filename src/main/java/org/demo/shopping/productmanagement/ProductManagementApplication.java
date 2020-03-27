@@ -15,7 +15,7 @@ import java.util.Date;
 
 @SpringBootApplication()
 @Slf4j
-public class ProductManagementApplication { //implements CommandLineRunner {
+public class ProductManagementApplication implements CommandLineRunner {
 
     @Autowired
     ProductCatalogRepository productCatalogRepository;
@@ -40,11 +40,11 @@ public class ProductManagementApplication { //implements CommandLineRunner {
 	}
 
 
-	/*
+
 	@Override
 	public void run(String... args) throws Exception {
         log.info("Application Started !!");
-        /*ProductCatalog cat1 = new ProductCatalog();
+        ProductCatalog cat1 = new ProductCatalog();
         cat1.setName("T-SHIRT");
         cat1.setProductCatalogCode("T-SHIRT");
         productCatalogRepository.save(cat1);
@@ -79,6 +79,6 @@ public class ProductManagementApplication { //implements CommandLineRunner {
         ProductPrice productPrice = new ProductPrice(100.00, 1, product.getId());
         productPriceRepository.save(productPrice);
 
-	}*/
+	}
 
 }
