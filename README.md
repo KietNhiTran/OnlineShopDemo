@@ -58,11 +58,11 @@ Following problem or aspect is not taken care of :
 * provide localization and language translation for name and description, etc.. of product catalog, product and branch.
 * No other entity for pricing management system like : currency, promotion, ...  
 
-![ERD Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/KietNhiTran/demo/master/docs/ERD.puml)
+![ERD Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/KietNhiTran/OnlineShopDemo/master/docs/ERD.puml)
 
 ## Class Diagram
 To simplify the diagram, all the fields and method are not documented.
-![Classes Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/KietNhiTran/demo/master/docs/Classes.puml)
+![Classes Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/KietNhiTran/OnlineShopDemo/master/docs/Classes.puml)
 
 
 ## Implementation and How to run
