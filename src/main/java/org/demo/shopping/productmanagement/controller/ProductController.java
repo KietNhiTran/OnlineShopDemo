@@ -31,4 +31,11 @@ public class ProductController {
     }
 
 
+    @GetMapping("/products?name={name}")
+    public ResponseEntity<List<Product>> findByName(@RequestParam String name) {
+        List<Product> products = productRepository.findByName(name);
+        return ResponseEntity.ok(products);
+    }
+
+
 }

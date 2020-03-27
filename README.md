@@ -60,8 +60,59 @@ Following problem or aspect is not taken care of :
 
 ![ERD Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/KietNhiTran/demo/master/docs/ERD.puml)
 
+## Class Diagram
+To simplify the diagram, all the fields and method are not documented.
+![Classes Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/KietNhiTran/demo/master/docs/Classes.puml)
 
 
+## Implementation and How to run
+Thing which is not included in the demo product service:
+* No AWS stuff there yet
+* Separated view and write DTO and using DTO
+* Reduce layer for the demo by removing service layer.
+* No setup Docker registry yet. So please don't push it.
 
+**Demo includes:**
+* Run and build the solution either via Docker (to make application deployable later to ECS) or normal spring boot application. 
+* Integrate maven build cycle with docker build cycle via dockermaven plugin.
+* Demonstrate JPA / ORM; using Spring Data JPA, lombok, introduce mapstruct 
+* Demonstrate Spring & Maven profile usage; env variable
+* Just a small integration is provided
+* Initialize some data via CommandLineRunner
 
+**How to run**
+Build the solution
+```
+ mvn package //with docker image built
+ or
+ mvn -Ddockerfile.skip package //without docker image built
+```
 
+Launch it
+```
+ mvn spring-boot:run
+ or
+ docker run -p 8080:8080 trankietnhi/springdemo:0.0.1-SNAPSHOT 
+```
+
+Test it
+```
+ //load some prefilled products
+ curl -X GET http://localhost:8080/api/v1/productmanagement/products 
+ 
+ //create a branch
+ curl -X POST -d '{"name": "test", "branchCode" : "1" }' -H 'Content-Type: application/json' http://localhost:8080/api/v1/productmanagement/branches 
+ 
+ // create a product: naviage to <you path>/OnlineShopDemo/src/test/resource folder where the request.json there 
+ // please check the id of branch, product catalog in case those ids in the request.json file does not exist
+ // Pre-inserted Branch and ProductCatalog can be seen using above list product request 
+ curl -X POST -d @request.json -H 'Content-Type: application/json' http://localhost:8080/api/v1/productmanagement/products
+```
+
+H2 console can be access via http://localhost:8080/hs-console
+
+JDBC URL : jdbc:h2:mem:appdb
+
+username: sa
+
+No password

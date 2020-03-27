@@ -1,0 +1,79 @@
+@startuml
+
+
+package Model {
+
+ package enumeration {
+    Enum AttributeType
+    Enum Color
+    Enum Currency
+ }
+
+
+ abstract class BaseEntity {
+   Date createdAt
+   Date udatedAt
+ }
+ class ProductCatalog
+ class Branch
+ class Product {
+   ...
+   ProductPrice getCurrentPrice()
+   ... ()
+ }
+ class Attribute {
+    AttributeID id
+ }
+ class AttributeID
+ class ProductAttribute
+ class ProductPrice
+
+ BaseEntity <|-- ProductCatalog
+ BaseEntity <|-- Branch
+ BaseEntity <|-- Product
+ BaseEntity <|-- Attribute
+ BaseEntity <|-- ProductAttribute
+ BaseEntity <|-- ProductPrice
+
+ Product *-- ProductAttribute : conatains list of
+ Product *-- ProductPrice : has
+ Product -- Branch : has a >
+ Product -- ProductCatalog : has a type >
+ Attribute *-- AttributeID : has a composite key
+
+}
+
+package controller {
+   class ProductController << RestController >>
+   class HealthCheckController << RestController >>
+   class ProductCatalogController << RestController >>
+   class BranchController << RestController >>
+}
+
+
+
+package Repository {
+
+
+   interface JpaRepository << Spring Data JPA>>
+   interface AttributeRepository << Repository >>
+   interface BranchRepository << Repository >>
+   interface ProductAttributeRepository << Repository >>
+   interface ProductCatalogRepository << Repository >>
+   interface ProductPriceRepository << Repository >>
+   interface ProductRepository << Repository >>
+
+   JpaRepository <|-- AttributeRepository
+   JpaRepository <|-- BranchRepository
+   JpaRepository <|-- ProductAttributeRepository
+   JpaRepository <|-- ProductCatalogRepository
+   JpaRepository <|-- ProductPriceRepository
+   JpaRepository <|-- ProductRepository
+
+}
+
+Package Test {
+   class ProductIntegrationTest << SpringBootTest >>
+}
+
+@enduml
