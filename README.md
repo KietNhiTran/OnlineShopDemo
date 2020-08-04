@@ -32,9 +32,9 @@ We can use one API gateway for the whole system (multiple microservices) or depe
 **4) Backend API microservices**
 
 The online shopping system contains of multiple microservice for different domains: product catalog management, Order management, Billing and invoice managemant services, ect ...
-* Each microservice (or each domain system) is deployed into **ECS cluster** to indepent scaling and own its own data.
+* Each microservice (or each sub-domain system) is deployed into **ECS cluster** independently with its own data.
 * For the demo purpose and the MVP version of the product, only the **product service** is needed in this version.
-* Each **ECS cluster** contains its own **Elastc load balancer**, **autoscaling group**, **containers on EC2**.
+* **ECS cluster** contains **Elastc load balancer**, **autoscaling group**, **containers on EC2**.
 * API gateway direct the traffic to ECS through its load balancer.
 
 **5) Database and caching**
